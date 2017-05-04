@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC6A38F832432ACE281F6C1D /* Pods_Weathify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56AAB6E7FC25635CC0548EB6 /* Pods_Weathify.framework */; };
 		BF23ADF61EBB839F00FD5F00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23ADF51EBB839F00FD5F00 /* AppDelegate.swift */; };
 		BF23ADF81EBB839F00FD5F00 /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23ADF71EBB839F00FD5F00 /* LoginPageViewController.swift */; };
 		BF23ADFB1EBB839F00FD5F00 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF23ADF91EBB839F00FD5F00 /* Main.storyboard */; };
@@ -18,9 +19,13 @@
 		BF23AE111EBB84D700FD5F00 /* BridgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF23AE101EBB84D700FD5F00 /* BridgingViewController.m */; };
 		BF23AE131EBB850D00FD5F00 /* APIsession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AE121EBB850D00FD5F00 /* APIsession.swift */; };
 		BF23AE151EBB866400FD5F00 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AE141EBB866400FD5F00 /* MainViewController.swift */; };
+		BF23AE171EBBA12800FD5F00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE161EBBA12800FD5F00 /* Alamofire.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B4CC42D4BBB972B64A65CC9 /* Pods-Weathify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weathify/Pods-Weathify.release.xcconfig"; sourceTree = "<group>"; };
+		56AAB6E7FC25635CC0548EB6 /* Pods_Weathify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weathify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85B81F66A2E2582C6B089261 /* Pods-Weathify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weathify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weathify/Pods-Weathify.debug.xcconfig"; sourceTree = "<group>"; };
 		BF23ADF21EBB839F00FD5F00 /* Weathify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF23ADF51EBB839F00FD5F00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF23ADF71EBB839F00FD5F00 /* LoginPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPageViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +41,7 @@
 		BF23AE101EBB84D700FD5F00 /* BridgingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BridgingViewController.m; path = ../BridgingViewController.m; sourceTree = "<group>"; };
 		BF23AE121EBB850D00FD5F00 /* APIsession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsession.swift; sourceTree = "<group>"; };
 		BF23AE141EBB866400FD5F00 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		BF23AE161EBBA12800FD5F00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Weathify-gxwxivhqikfozkarzgiqftqfuexl/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,20 +49,42 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF23AE171EBBA12800FD5F00 /* Alamofire.framework in Frameworks */,
 				BF23AE0A1EBB83F000FD5F00 /* SpotifyAudioPlayback.framework in Frameworks */,
 				BF23AE0C1EBB83F000FD5F00 /* SpotifyMetadata.framework in Frameworks */,
 				BF23AE0B1EBB83F000FD5F00 /* SpotifyAuthentication.framework in Frameworks */,
+				BC6A38F832432ACE281F6C1D /* Pods_Weathify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B13E443D3CE66D2925D804B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85B81F66A2E2582C6B089261 /* Pods-Weathify.debug.xcconfig */,
+				1B4CC42D4BBB972B64A65CC9 /* Pods-Weathify.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1FD90221566AB8C149F35082 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF23AE161EBBA12800FD5F00 /* Alamofire.framework */,
+				56AAB6E7FC25635CC0548EB6 /* Pods_Weathify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF23ADE91EBB839F00FD5F00 = {
 			isa = PBXGroup;
 			children = (
 				BF23ADF41EBB839F00FD5F00 /* Weathify */,
 				BF23ADF31EBB839F00FD5F00 /* Products */,
+				1B13E443D3CE66D2925D804B /* Pods */,
+				1FD90221566AB8C149F35082 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,9 +124,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BF23AE041EBB839F00FD5F00 /* Build configuration list for PBXNativeTarget "Weathify" */;
 			buildPhases = (
+				3E629ACD635AC4F601C79399 /* [CP] Check Pods Manifest.lock */,
 				BF23ADEE1EBB839F00FD5F00 /* Sources */,
 				BF23ADEF1EBB839F00FD5F00 /* Frameworks */,
 				BF23ADF01EBB839F00FD5F00 /* Resources */,
+				655BE873767374C96EEB8A97 /* [CP] Embed Pods Frameworks */,
+				DE5CBD2BA1B458B4F3EA1BB9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -156,6 +187,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E629ACD635AC4F601C79399 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		655BE873767374C96EEB8A97 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weathify/Pods-Weathify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE5CBD2BA1B458B4F3EA1BB9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Weathify/Pods-Weathify-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BF23ADEE1EBB839F00FD5F00 /* Sources */ = {
@@ -287,6 +366,7 @@
 		};
 		BF23AE051EBB839F00FD5F00 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85B81F66A2E2582C6B089261 /* Pods-Weathify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -306,6 +386,7 @@
 		};
 		BF23AE061EBB839F00FD5F00 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1B4CC42D4BBB972B64A65CC9 /* Pods-Weathify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -341,6 +422,7 @@
 				BF23AE061EBB839F00FD5F00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

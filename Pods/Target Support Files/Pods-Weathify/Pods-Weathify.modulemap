@@ -1,0 +1,6 @@
+framework module Pods_Weathify {
+  umbrella header "Pods-Weathify-umbrella.h"
+
+  export *
+  module * { export * }
+}

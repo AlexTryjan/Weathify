@@ -9,6 +9,7 @@
 import UIKit
 import SafariServices
 import AVFoundation
+import Alamofire
 
 class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
     
@@ -95,7 +96,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     
     func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
         print("logged in")
-        self.player?.playSpotifyURI(testURI, startingWith: 0, startingWithPosition: 0, callback: { (error) in
+        self.player?.playSpotifyURI(songURI, startingWith: 0, startingWithPosition: 0, callback: { (error) in
             if (error != nil) {
                 print("playing!")
             }
@@ -108,7 +109,37 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     }
     
     func updateURI() {
-        //let testValue = "Sunny"
+        let testValue = "Sunny"
+        let frontUrl = "https://api.spotify.com/v1/search?q="
+        let backUrl = "&type=track"
+        let fullUrl = frontUrl + testValue + backUrl
+        callAlamo(url: fullUrl)
+    }
+    
+    func parseSpotifyJSON(JSONData: Data) {
+        do {
+            var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [String:AnyObject]
+            if let tracks = readableJSON["tracks"] as? [String:AnyObject] {
+                if let items = tracks["items"] as? NSArray {
+                    for i in 0..<items.count {
+                        let item = items[i] as! [String:AnyObject]
+                        let name = item["name"]
+                        self.songNameLabel.text = name as! String?
+                        songURI = item["uri"] as! String?
+                    }
+                }
+            }
+            print(readableJSON)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func callAlamo(url:String) {
+        Alamofire.request(url).responseJSON(completionHandler: {
+            response in
+            self.parseSpotifyJSON(JSONData: response.data!)
+        })
     }
     
     @IBAction func play(_ sender: UIButton) {
