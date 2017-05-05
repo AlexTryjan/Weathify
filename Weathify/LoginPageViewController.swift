@@ -7,15 +7,23 @@
 //
 
 import UIKit
-import SafariServices
-import AVFoundation
 import Alamofire
+import CoreLocation
 
 class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+    
+    //Constants
+    let frontSpotifyUrl = "https://api.spotify.com/v1/search?q="
+    let backSpotifyUrl = "&type=track&limit=50"
+    let frontWeatherUrl = "https://api.weatherbit.io/v1.0/current?lat="
+    let backWeatherUrl = "&APPID=" + apikey
     
     // Variables
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
+    var isLogin = true
+    var weather : String?
+    var locManager = CLLocationManager()
     
     // Initialzed in either updateAfterFirstLogin: (if first time login) or in viewDidLoad (when there is a check for a session object in User Defaults
     var player: SPTAudioStreamingController?
@@ -26,7 +34,6 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     
     //URI for song
     var songURI : String?
-    let testURI = "spotify:track:58s6EuEYJdlb0kO7awm3Vp"
     
     //Outlets
     @IBOutlet weak var loginButton: UIButton!
@@ -42,8 +49,12 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         // Do any additional setup after loading the view, typically from a nib.
         setup()
         
+        locManager.requestWhenInUseAuthorization()
+        
         //move this to main page button Action
         NotificationCenter.default.addObserver(self, selector: #selector(LoginPageViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
+        
+        updateWeather()
     }
     
     func setup () {
@@ -62,7 +73,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
             try! player?.start(withClientId: auth.clientID)
             self.player!.login(withAccessToken: authSession.accessToken)
         } else {
-            self.player?.playSpotifyURI(testURI, startingWith: 0, startingWithPosition: 0, callback: { (error) in
+            self.player?.playSpotifyURI(songURI, startingWith: 0, startingWithPosition: 0, callback: { (error) in
                 if (error != nil) {
                     print("playing!")
                 }
@@ -71,15 +82,32 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     }
     
     func updateAfterFirstLogin () {
-        
-        loginButton.isHidden = true
-        playButton.isHidden = false
-        songNameLabel.isHidden = false
-        weatherTypeLabel.isHidden = false
-        artistNameLabel.isHidden = false
-        for i in 0..<displayLabels.count {
-            displayLabels[i].isHidden = false
+        let userDefaults = UserDefaults.standard
+        if let sessionObj:AnyObject = userDefaults.object(forKey: "SpotifySession") as AnyObject? {
+            let sessionDataObj = sessionObj as! Data
+            if NSKeyedUnarchiver.unarchiveObject(with: sessionDataObj) is NSNull {
+                //login error or cancel
+                if(!isLogin) {
+                    toggleView()
+                }
+                return;
+            }
         }
+        if(isLogin) {
+            toggleView()
+        }
+    }
+    
+    func toggleView() {
+        loginButton.isHidden = isLogin
+        playButton.isHidden = !isLogin
+        songNameLabel.isHidden = !isLogin
+        weatherTypeLabel.isHidden = !isLogin
+        artistNameLabel.isHidden = !isLogin
+        for i in 0..<displayLabels.count {
+            displayLabels[i].isHidden = !isLogin
+        }
+        isLogin = !isLogin
     }
     
     func playCurrentURI() {
@@ -105,15 +133,35 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     }
     
     func updateWeather() {
+        let urlComponents = NSURLComponents()
+        urlComponents.scheme = "https";
+        urlComponents.host = "api.weatherbit.io";
+        urlComponents.path = "/v1.0/current";
         
+        // add params
+        let latitudeQuery = URLQueryItem(name: "lat", value: "123")
+        let longitudeQuery = URLQueryItem(name: "lon", value: "123")
+        let apiKeyQuery = URLQueryItem(name: "key", value: apikey)
+        urlComponents.queryItems = [latitudeQuery, longitudeQuery, apiKeyQuery]
+        //let fullUrl = "https://api.weatherbit.io/v1.0/current?lat=123&lon=123&key=cfeba487bc374cda9061ef0cb44e2e44"
+        let fullUrl : String? = urlComponents.url?.absoluteString
+        callAlamoWeather(url: fullUrl!)
     }
     
     func updateURI() {
-        let testValue = "Sunny"
-        let frontUrl = "https://api.spotify.com/v1/search?q="
-        let backUrl = "&type=track"
-        let fullUrl = frontUrl + testValue + backUrl
-        callAlamo(url: fullUrl)
+        let urlComponents = NSURLComponents()
+        urlComponents.scheme = "https";
+        urlComponents.host = "api.spotify.com";
+        urlComponents.path = "/v1/search";
+        
+        // add params
+        let qQuery = URLQueryItem(name: "q", value: weather!)
+        let typeQuery = URLQueryItem(name: "type", value: "track")
+        let limitQuery = URLQueryItem(name: "limit", value: "50")
+        urlComponents.queryItems = [qQuery, typeQuery, limitQuery]
+        let fullUrl : String? = urlComponents.url?.absoluteString
+        print(fullUrl!)
+        callAlamo(url: fullUrl!)
     }
     
     func parseSpotifyJSON(JSONData: Data) {
@@ -121,15 +169,36 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [String:AnyObject]
             if let tracks = readableJSON["tracks"] as? [String:AnyObject] {
                 if let items = tracks["items"] as? NSArray {
-                    for i in 0..<items.count {
-                        let item = items[i] as! [String:AnyObject]
-                        let name = item["name"]
-                        self.songNameLabel.text = name as! String?
-                        songURI = item["uri"] as! String?
-                    }
+                    let randomNum : UInt32 = arc4random_uniform(UInt32(items.count))
+                    let item = items[Int(randomNum)] as! [String:AnyObject]
+                    let name = item["name"]
+                    self.songNameLabel.text = name as! String?
+                    songURI = item["uri"] as! String?
                 }
             }
-            print(readableJSON)
+            //print(readableJSON)
+        } catch {
+            print(error)
+        }
+    }
+    
+    func parseWeatherJSON(JSONData: Data) {
+        do {
+            var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [String:AnyObject]
+            if let data = readableJSON["data"] as? NSArray {
+                if let instance = data[0] as? [String:AnyObject] {
+                    let weather = instance["weather"] as? [String:AnyObject]
+                    let description = weather?["description"] as! String?
+                    self.weatherTypeLabel.text = description
+                    self.weather = description
+                }
+            }
+
+            if let weather = readableJSON["weather"] as? [String:AnyObject] {
+                let mainDescription = weather["description"] as! String?
+                weatherTypeLabel.text = mainDescription
+            }
+            //print(readableJSON)
         } catch {
             print(error)
         }
@@ -142,18 +211,24 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         })
     }
     
+    func callAlamoWeather(url:String) {
+        print(url)
+        Alamofire.request(url).responseJSON(completionHandler: {
+            response in
+            self.parseWeatherJSON(JSONData: response.data!)
+        })
+    }
+    
     @IBAction func play(_ sender: UIButton) {
-        updateWeather()
         updateURI()
-        playCurrentURI()
+        let when = DispatchTime.now() + 0.025
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            self.playCurrentURI()
+        }
     }
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
-        if UIApplication.shared.openURL(loginUrl!) {
-            if !auth.canHandle(auth.redirectURL) {
-                print("Connection Error - Invalid RedirectURL")
-            }
-        }
+        UIApplication.shared.open(loginUrl!, options: [:], completionHandler: nil)
     }
     
     
