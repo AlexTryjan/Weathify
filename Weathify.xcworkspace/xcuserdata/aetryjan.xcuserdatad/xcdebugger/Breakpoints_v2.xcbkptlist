@@ -10,13 +10,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weathify/LoginPageViewController.swift"
-            timestampString = "515646825.694631"
+            timestampString = "515650408.436651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
             landmarkName = "parseWeatherJSON(JSONData:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Weathify.LoginPageViewController.parseWeatherJSON (JSONData : Foundation.Data) -&gt; ()"
+                  moduleName = "Weathify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aetryjan/Desktop/iOS%20Final/Weathify/Weathify/LoginPageViewController.swift"
+                  timestampString = "515649953.449281"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "2903">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Weathify.LoginPageViewController.parseWeatherJSON (JSONData : Foundation.Data) -&gt; ()"
+                  moduleName = "Weathify"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aetryjan/Desktop/iOS%20Final/Weathify/Weathify/LoginPageViewController.swift"
+                  timestampString = "515649953.451036"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "226"
+                  endingLineNumber = "226"
+                  offsetFromSymbolStart = "3427">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,28 +58,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Weathify/LoginPageViewController.swift"
-            timestampString = "515646825.694631"
+            timestampString = "515650408.436651"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
-            landmarkName = "parseWeatherJSON(JSONData:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Weathify/LoginPageViewController.swift"
-            timestampString = "515646825.694631"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
+            startingLineNumber = "263"
+            endingLineNumber = "263"
             landmarkName = "play(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weathify/LoginPageViewController.swift"
+            timestampString = "515649715.846915"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "isProblemCharacter(char:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Weathify/LoginPageViewController.swift"
+            timestampString = "515650408.436651"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
+            landmarkName = "parseWeatherJSON(JSONData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

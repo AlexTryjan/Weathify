@@ -22,8 +22,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgound" translatesAutoresizingMaskIntoConstraints="NO" id="fYD-24-CrT">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lhD-EU-Ut3">
-                                <rect key="frame" x="0.0" y="504.5" width="375" height="20.5"/>
+                                <rect key="frame" x="0.0" y="524" width="375" height="20.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Q78-3O-jbs"/>
                                 </constraints>
@@ -31,49 +34,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-Xx-ZWH">
-                                <rect key="frame" x="157" y="72" width="61" height="30"/>
-                                <state key="normal" title="Weathify"/>
-                                <connections>
-                                    <action selector="play:" destination="w0i-Re-RSY" eventType="touchUpInside" id="DIt-aQ-mQV"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq9-O9-wmb">
-                                <rect key="frame" x="0.0" y="415.5" width="375" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="qm6-mx-GUi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sl-Wh-fHn">
-                                <rect key="frame" x="0.0" y="533" width="375" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="375" id="VE1-ge-nIE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK1-IV-ZvW">
-                                <rect key="frame" x="164" y="72" width="47" height="30"/>
-                                <state key="normal" title="Sign In"/>
-                                <connections>
-                                    <action selector="loginButtonPressed:" destination="w0i-Re-RSY" eventType="touchUpInside" id="rXr-co-WJ4"/>
-                                </connections>
-                            </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently Playing:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RL-if-F9D">
-                                <rect key="frame" x="104.5" y="476" width="166" height="20.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="166" id="QFJ-PQ-EaO"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="zXQ-wq-tw3">
-                                <rect key="frame" x="121" y="387" width="132" height="21"/>
+                                <rect key="frame" x="121" y="407" width="132" height="21"/>
                                 <subviews>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Weather:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="try-0K-DAh">
                                         <rect key="frame" x="0.0" y="0.0" width="132" height="20.5"/>
@@ -86,25 +48,89 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wq9-O9-wmb">
+                                <rect key="frame" x="0.0" y="435" width="375" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="qm6-mx-GUi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Sl-Wh-fHn">
+                                <rect key="frame" x="0.0" y="552.5" width="375" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="VE1-ge-nIE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xK1-IV-ZvW">
+                                <rect key="frame" x="52" y="218" width="270" height="50"/>
+                                <state key="normal" image="loginspotify"/>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="w0i-Re-RSY" eventType="touchUpInside" id="rXr-co-WJ4"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Currently Playing:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RL-if-F9D">
+                                <rect key="frame" x="104.5" y="495.5" width="166" height="20.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="QFJ-PQ-EaO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Yha-TE-8F6">
+                                <rect key="frame" x="67" y="145" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="1nC-yu-xfJ"/>
+                                    <constraint firstAttribute="height" constant="240" id="wpt-BM-sT5"/>
+                                </constraints>
+                            </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-Xx-ZWH">
+                                <rect key="frame" x="122" y="92" width="131" height="30"/>
+                                <color key="backgroundColor" red="0.31334580770363396" green="0.49439742540492537" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="131" id="Oa0-Ls-i3Z"/>
+                                    <constraint firstAttribute="height" constant="30" id="n6l-BO-Zuy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Click to Weathify!">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="play:" destination="w0i-Re-RSY" eventType="touchUpInside" id="DIt-aQ-mQV"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zXQ-wq-tw3" firstAttribute="top" secondItem="Yha-TE-8F6" secondAttribute="bottom" constant="22" id="0k1-en-KbH"/>
                             <constraint firstItem="zXQ-wq-tw3" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="1c8-yC-Jid"/>
                             <constraint firstItem="4RL-if-F9D" firstAttribute="top" secondItem="wq9-O9-wmb" secondAttribute="bottom" constant="40" id="3Xk-gj-Vz2"/>
                             <constraint firstItem="1Sl-Wh-fHn" firstAttribute="top" secondItem="lhD-EU-Ut3" secondAttribute="bottom" constant="8" id="5ke-2E-Eg6"/>
-                            <constraint firstItem="7rM-Xx-ZWH" firstAttribute="top" secondItem="Pzo-Ih-tc1" secondAttribute="bottom" constant="8" id="BCa-Zs-dpg"/>
+                            <constraint firstItem="Yha-TE-8F6" firstAttribute="top" secondItem="7rM-Xx-ZWH" secondAttribute="bottom" constant="23" id="789-eZ-IVh"/>
+                            <constraint firstItem="vyQ-1Y-qYS" firstAttribute="top" secondItem="fYD-24-CrT" secondAttribute="bottom" id="B10-xu-T9U"/>
+                            <constraint firstItem="xK1-IV-ZvW" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="Bks-xo-Tz4"/>
                             <constraint firstItem="lhD-EU-Ut3" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="Hd4-Cf-9hX"/>
                             <constraint firstItem="4RL-if-F9D" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="Jnv-Ui-byt"/>
                             <constraint firstItem="wq9-O9-wmb" firstAttribute="top" secondItem="zXQ-wq-tw3" secondAttribute="bottom" constant="8" id="MgE-C3-bHY"/>
+                            <constraint firstItem="xK1-IV-ZvW" firstAttribute="top" secondItem="7rM-Xx-ZWH" secondAttribute="bottom" constant="96" id="OCd-e8-cQY"/>
+                            <constraint firstItem="fYD-24-CrT" firstAttribute="top" secondItem="Pzo-Ih-tc1" secondAttribute="bottom" id="RHA-ji-24U"/>
                             <constraint firstItem="1Sl-Wh-fHn" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="VTA-0v-asI"/>
+                            <constraint firstItem="7rM-Xx-ZWH" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="WGy-CX-NGb"/>
+                            <constraint firstAttribute="trailing" secondItem="fYD-24-CrT" secondAttribute="trailing" id="bDC-K2-9sk"/>
                             <constraint firstItem="wq9-O9-wmb" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="cwD-N8-nTC"/>
                             <constraint firstItem="4RL-if-F9D" firstAttribute="top" secondItem="wq9-O9-wmb" secondAttribute="bottom" constant="40" id="hwy-tc-8XS"/>
-                            <constraint firstItem="xK1-IV-ZvW" firstAttribute="top" secondItem="Pzo-Ih-tc1" secondAttribute="bottom" constant="8" id="lQ3-ps-oB9"/>
+                            <constraint firstItem="fYD-24-CrT" firstAttribute="leading" secondItem="xOT-Aq-GqB" secondAttribute="leading" id="hx6-ci-zEK"/>
                             <constraint firstItem="4RL-if-F9D" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="mCR-8c-M5F"/>
+                            <constraint firstItem="Yha-TE-8F6" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="mfN-tf-vC4"/>
+                            <constraint firstItem="7rM-Xx-ZWH" firstAttribute="top" secondItem="Pzo-Ih-tc1" secondAttribute="bottom" constant="28" id="nY5-P3-jtx"/>
                             <constraint firstItem="lhD-EU-Ut3" firstAttribute="top" secondItem="4RL-if-F9D" secondAttribute="bottom" constant="8" id="ohj-AI-hIF"/>
-                            <constraint firstItem="xK1-IV-ZvW" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="ubp-sM-HAB"/>
-                            <constraint firstItem="7rM-Xx-ZWH" firstAttribute="centerX" secondItem="xOT-Aq-GqB" secondAttribute="centerX" id="wPX-PC-A8E"/>
-                            <constraint firstItem="zXQ-wq-tw3" firstAttribute="top" secondItem="xK1-IV-ZvW" secondAttribute="bottom" constant="285" id="xF4-9z-NRk"/>
+                            <constraint firstItem="1Sl-Wh-fHn" firstAttribute="top" secondItem="lhD-EU-Ut3" secondAttribute="bottom" constant="8" id="vZx-P8-54b"/>
+                            <constraint firstItem="1Sl-Wh-fHn" firstAttribute="top" secondItem="lhD-EU-Ut3" secondAttribute="bottom" constant="8" id="wJk-en-Lkz"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Weathify" id="m45-lO-cm6">
@@ -115,6 +141,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="albumCoverImage" destination="Yha-TE-8F6" id="22O-Mc-N88"/>
                         <outlet property="artistNameLabel" destination="1Sl-Wh-fHn" id="FCY-xU-3Yr"/>
                         <outlet property="loginButton" destination="xK1-IV-ZvW" id="I7m-3R-fB6"/>
                         <outlet property="playButton" destination="7rM-Xx-ZWH" id="O8S-Ue-EXV"/>
@@ -126,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GlM-fL-CJ0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="894.5" y="35.5"/>
+            <point key="canvasLocation" x="893.60000000000002" y="34.632683658170919"/>
         </scene>
         <!--History-->
         <scene sceneID="BXq-mh-0lg">
@@ -231,4 +258,8 @@
             <point key="canvasLocation" x="86" y="35"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="backgound" width="640" height="1136"/>
+        <image name="loginspotify" width="270" height="50"/>
+    </resources>
 </document>

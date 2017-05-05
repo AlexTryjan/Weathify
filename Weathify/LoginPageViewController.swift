@@ -12,25 +12,19 @@ import CoreLocation
 
 class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
     
-    //Constants
-    let frontSpotifyUrl = "https://api.spotify.com/v1/search?q="
-    let backSpotifyUrl = "&type=track&limit=50"
-    let frontWeatherUrl = "https://api.weatherbit.io/v1.0/current?lat="
-    let backWeatherUrl = "&APPID=" + apikey
-    
     // Variables
     var auth = SPTAuth.defaultInstance()!
     var session:SPTSession!
-    var isLogin = true
-    var weather : String?
+    var isLogin = true //Tells app if the user has logged in
+    var weather : String? //Search term from weather API
     var locManager = CLLocationManager()
+    var latitude = 41.4993
+    var longitude = -81.6944
+    var problemCharacters : [Character] = ["O"]
     
     // Initialzed in either updateAfterFirstLogin: (if first time login) or in viewDidLoad (when there is a check for a session object in User Defaults
     var player: SPTAudioStreamingController?
-    var loginUrl: URL?
-    
-    //Search Term From WeatherAPI
-    var searchTerm : String?
+    var loginUrl : URL?
     
     //URI for song
     var songURI : String?
@@ -42,7 +36,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     @IBOutlet var displayLabels: [UILabel]!
     @IBOutlet weak var weatherTypeLabel: UILabel!
     @IBOutlet weak var artistNameLabel: UILabel!
-    
+    @IBOutlet weak var albumCoverImage: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +57,15 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         auth.clientID = clientID
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
         loginUrl = auth.spotifyWebAuthenticationURL()
+    }
+    
+    func isProblemCharacter(char:Character) -> Bool {
+        for i in 0..<problemCharacters.count {
+            if problemCharacters[i] == char {
+                return true
+            }
+        }
+        return false
     }
     
     func initializePlayer(authSession:SPTSession){
@@ -96,6 +99,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         if(isLogin) {
             toggleView()
         }
+        updatePosition()
     }
     
     func toggleView() {
@@ -104,6 +108,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         songNameLabel.isHidden = !isLogin
         weatherTypeLabel.isHidden = !isLogin
         artistNameLabel.isHidden = !isLogin
+        albumCoverImage.isHidden = !isLogin
         for i in 0..<displayLabels.count {
             displayLabels[i].isHidden = !isLogin
         }
@@ -132,18 +137,28 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         
     }
     
+    func updatePosition() {
+        var currentLocation : CLLocation?
+        if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+            currentLocation = locManager.location
+            latitude = (currentLocation?.coordinate.latitude)!
+            longitude = (currentLocation?.coordinate.longitude)!
+        }
+    }
+    
     func updateWeather() {
         let urlComponents = NSURLComponents()
         urlComponents.scheme = "https";
         urlComponents.host = "api.weatherbit.io";
         urlComponents.path = "/v1.0/current";
         
+        updatePosition()
+        
         // add params
-        let latitudeQuery = URLQueryItem(name: "lat", value: "123")
-        let longitudeQuery = URLQueryItem(name: "lon", value: "123")
+        let latitudeQuery = URLQueryItem(name: "lat", value: String(latitude))
+        let longitudeQuery = URLQueryItem(name: "lon", value: String(longitude))
         let apiKeyQuery = URLQueryItem(name: "key", value: apikey)
         urlComponents.queryItems = [latitudeQuery, longitudeQuery, apiKeyQuery]
-        //let fullUrl = "https://api.weatherbit.io/v1.0/current?lat=123&lon=123&key=cfeba487bc374cda9061ef0cb44e2e44"
         let fullUrl : String? = urlComponents.url?.absoluteString
         callAlamoWeather(url: fullUrl!)
     }
@@ -176,6 +191,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
                     if let artists = item["artists"] as? NSArray {
                         let artistInfo = artists[0] as! [String:AnyObject]
                         artistName = artistInfo["name"] as! String?
+                        self.artistNameLabel.text = artistName
                     }
                     if let albumInfo = item["album"] as? [String:AnyObject] {
                         let albumName = albumInfo["name"] as! String?
@@ -184,6 +200,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
                             let albumCoverUrl = URL(string: albumCoverInfo["url"] as! String)
                             let albumCoverData = NSData(contentsOf: albumCoverUrl!)
                             let albumCoverImage = UIImage(data: albumCoverData as! Data)
+                            self.albumCoverImage.image = albumCoverImage
                             songHistory.insert(Song.init(title: name, artist: artistName, albumName: albumName, albumArt: albumCoverImage),at: 0)
                         }
                     }
@@ -192,7 +209,6 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
                     
                 }
             }
-            //print(readableJSON)
         } catch {
             print(error)
         }
@@ -214,9 +230,17 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
                 let mainDescription = weather["description"] as! String?
                 weatherTypeLabel.text = mainDescription
             }
-            //print(readableJSON)
         } catch {
             print(error)
+        }
+        //Sometimes, weather description is too complex for Spotify -> so we remove problem words
+        if isProblemCharacter(char: weather![weather!.startIndex]) {
+            let components = weather!.components(separatedBy: " ")
+            if components.count > 0 {
+                weather! = components[1]
+                weather! = weather!.capitalized
+                weatherTypeLabel.text = weather
+            }
         }
     }
     
