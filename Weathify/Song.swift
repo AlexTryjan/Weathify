@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Song {
+struct Song {
     var title : String?
     var artist : String?
     var albumName : String?
-    var albumArt : NSData?
+    var albumArt : UIImage?
     
-    init(title:String?,artist:String?,albumName:String?,albumArt:NSData?) {
+    init(title:String?,artist:String?,albumName:String?,albumArt:UIImage?) {
         self.title = title
         self.artist = artist
         self.albumName = albumName

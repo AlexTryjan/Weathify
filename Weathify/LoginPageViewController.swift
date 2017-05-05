@@ -171,9 +171,25 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
                 if let items = tracks["items"] as? NSArray {
                     let randomNum : UInt32 = arc4random_uniform(UInt32(items.count))
                     let item = items[Int(randomNum)] as! [String:AnyObject]
-                    let name = item["name"]
-                    self.songNameLabel.text = name as! String?
+                    let name = item["name"] as! String?
+                    var artistName : String?
+                    if let artists = item["artists"] as? NSArray {
+                        let artistInfo = artists[0] as! [String:AnyObject]
+                        artistName = artistInfo["name"] as! String?
+                    }
+                    if let albumInfo = item["album"] as? [String:AnyObject] {
+                        let albumName = albumInfo["name"] as! String?
+                        if let albumArts = albumInfo["images"] as? NSArray {
+                            let albumCoverInfo = albumArts[0] as! [String:AnyObject]
+                            let albumCoverUrl = URL(string: albumCoverInfo["url"] as! String)
+                            let albumCoverData = NSData(contentsOf: albumCoverUrl!)
+                            let albumCoverImage = UIImage(data: albumCoverData as! Data)
+                            songHistory.insert(Song.init(title: name, artist: artistName, albumName: albumName, albumArt: albumCoverImage),at: 0)
+                        }
+                    }
+                    self.songNameLabel.text = name
                     songURI = item["uri"] as! String?
+                    
                 }
             }
             //print(readableJSON)

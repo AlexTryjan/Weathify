@@ -21,6 +21,7 @@
 		BF23AE171EBBA12800FD5F00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE161EBBA12800FD5F00 /* Alamofire.framework */; };
 		BF3A80661EBC0E3E00CBACD7 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A80651EBC0E3E00CBACD7 /* HistoryTableViewController.swift */; };
 		BF3A80681EBC0E7200CBACD7 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A80671EBC0E7200CBACD7 /* Song.swift */; };
+		BF3A806A1EBC1B5E00CBACD7 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A80691EBC1B5E00CBACD7 /* HistoryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		BF23AE161EBBA12800FD5F00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Weathify-gxwxivhqikfozkarzgiqftqfuexl/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		BF3A80651EBC0E3E00CBACD7 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		BF3A80671EBC0E7200CBACD7 /* Song.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		BF3A80691EBC1B5E00CBACD7 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				BF23AE121EBB850D00FD5F00 /* APIsession.swift */,
 				BF23ADF91EBB839F00FD5F00 /* Main.storyboard */,
 				BF3A80651EBC0E3E00CBACD7 /* HistoryTableViewController.swift */,
+				BF3A80691EBC1B5E00CBACD7 /* HistoryTableViewCell.swift */,
 				BF3A80671EBC0E7200CBACD7 /* Song.swift */,
 				BF23ADFC1EBB839F00FD5F00 /* Assets.xcassets */,
 				BF23ADFE1EBB839F00FD5F00 /* LaunchScreen.storyboard */,
@@ -246,6 +249,7 @@
 			files = (
 				BF3A80681EBC0E7200CBACD7 /* Song.swift in Sources */,
 				BF23AE111EBB84D700FD5F00 /* BridgingViewController.m in Sources */,
+				BF3A806A1EBC1B5E00CBACD7 /* HistoryTableViewCell.swift in Sources */,
 				BF23AE131EBB850D00FD5F00 /* APIsession.swift in Sources */,
 				BF3A80661EBC0E3E00CBACD7 /* HistoryTableViewController.swift in Sources */,
 				BF23ADF81EBB839F00FD5F00 /* LoginPageViewController.swift in Sources */,
