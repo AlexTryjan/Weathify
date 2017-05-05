@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import CoreLocation
 
-class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate {
+class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAudioStreamingDelegate, CLLocationManagerDelegate {
     
     // Variables
     var auth = SPTAuth.defaultInstance()!
@@ -21,8 +21,6 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
     var latitude = 41.4993
     var longitude = -81.6944
     var problemCharacters : [Character] = ["O"]
-    
-    // Initialzed in either updateAfterFirstLogin: (if first time login) or in viewDidLoad (when there is a check for a session object in User Defaults
     var player: SPTAudioStreamingController?
     var loginUrl : URL?
     
@@ -45,14 +43,12 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         
         locManager.requestWhenInUseAuthorization()
         
-        //move this to main page button Action
         NotificationCenter.default.addObserver(self, selector: #selector(LoginPageViewController.updateAfterFirstLogin), name: NSNotification.Name(rawValue: "loginSuccessfull"), object: nil)
         
         updateWeather()
     }
     
     func setup () {
-        // insert redirect your url and client ID below
         auth.redirectURL = URL(string: redirectURL)
         auth.clientID = clientID
         auth.requestedScopes = [SPTAuthStreamingScope, SPTAuthPlaylistReadPrivateScope, SPTAuthPlaylistModifyPublicScope, SPTAuthPlaylistModifyPrivateScope]
@@ -137,15 +133,21 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {}
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {}
+    
     func updatePosition() {
         var currentLocation : CLLocation?
         if(CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse){
+            locManager.delegate = self
+            locManager.requestLocation()
             currentLocation = locManager.location
             latitude = (currentLocation?.coordinate.latitude)!
             longitude = (currentLocation?.coordinate.longitude)!
         }
     }
     
+    //API query code
     func updateWeather() {
         let urlComponents = NSURLComponents()
         urlComponents.scheme = "https";
@@ -161,6 +163,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         urlComponents.queryItems = [latitudeQuery, longitudeQuery, apiKeyQuery]
         let fullUrl : String? = urlComponents.url?.absoluteString
         callAlamoWeather(url: fullUrl!)
+        print(fullUrl!)
     }
     
     func updateURI() {
@@ -179,6 +182,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         callAlamo(url: fullUrl!)
     }
     
+    //JSON Parsing code
     func parseSpotifyJSON(JSONData: Data) {
         do {
             var readableJSON = try JSONSerialization.jsonObject(with: JSONData, options: .mutableContainers) as! [String:AnyObject]
@@ -244,6 +248,7 @@ class LoginPageViewController: UIViewController, SPTAudioStreamingPlaybackDelega
         }
     }
     
+    //Alamofire
     func callAlamo(url:String) {
         Alamofire.request(url).responseJSON(completionHandler: {
             response in

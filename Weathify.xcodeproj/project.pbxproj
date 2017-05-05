@@ -16,7 +16,6 @@
 		BF23AE0A1EBB83F000FD5F00 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE071EBB83F000FD5F00 /* SpotifyAudioPlayback.framework */; };
 		BF23AE0B1EBB83F000FD5F00 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE081EBB83F000FD5F00 /* SpotifyAuthentication.framework */; };
 		BF23AE0C1EBB83F000FD5F00 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE091EBB83F000FD5F00 /* SpotifyMetadata.framework */; };
-		BF23AE111EBB84D700FD5F00 /* BridgingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BF23AE101EBB84D700FD5F00 /* BridgingViewController.m */; };
 		BF23AE131EBB850D00FD5F00 /* APIsession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF23AE121EBB850D00FD5F00 /* APIsession.swift */; };
 		BF23AE171EBBA12800FD5F00 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF23AE161EBBA12800FD5F00 /* Alamofire.framework */; };
 		BF3A80661EBC0E3E00CBACD7 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3A80651EBC0E3E00CBACD7 /* HistoryTableViewController.swift */; };
@@ -39,8 +38,6 @@
 		BF23AE081EBB83F000FD5F00 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
 		BF23AE091EBB83F000FD5F00 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
 		BF23AE0E1EBB84D700FD5F00 /* Weathify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Weathify-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		BF23AE0F1EBB84D700FD5F00 /* BridgingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BridgingViewController.h; path = ../BridgingViewController.h; sourceTree = "<group>"; };
-		BF23AE101EBB84D700FD5F00 /* BridgingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BridgingViewController.m; path = ../BridgingViewController.m; sourceTree = "<group>"; };
 		BF23AE121EBB850D00FD5F00 /* APIsession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIsession.swift; sourceTree = "<group>"; };
 		BF23AE161EBBA12800FD5F00 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../Library/Developer/Xcode/DerivedData/Weathify-gxwxivhqikfozkarzgiqftqfuexl/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		BF3A80651EBC0E3E00CBACD7 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
@@ -116,8 +113,6 @@
 				BF23ADFC1EBB839F00FD5F00 /* Assets.xcassets */,
 				BF23ADFE1EBB839F00FD5F00 /* LaunchScreen.storyboard */,
 				BF23AE011EBB839F00FD5F00 /* Info.plist */,
-				BF23AE0F1EBB84D700FD5F00 /* BridgingViewController.h */,
-				BF23AE101EBB84D700FD5F00 /* BridgingViewController.m */,
 				BF23AE0E1EBB84D700FD5F00 /* Weathify-Bridging-Header.h */,
 			);
 			path = Weathify;
@@ -248,7 +243,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BF3A80681EBC0E7200CBACD7 /* Song.swift in Sources */,
-				BF23AE111EBB84D700FD5F00 /* BridgingViewController.m in Sources */,
 				BF3A806A1EBC1B5E00CBACD7 /* HistoryTableViewCell.swift in Sources */,
 				BF23AE131EBB850D00FD5F00 /* APIsession.swift in Sources */,
 				BF3A80661EBC0E3E00CBACD7 /* HistoryTableViewController.swift in Sources */,
